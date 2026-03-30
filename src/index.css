@@ -1,0 +1,47 @@
+/* 1. Make the background cover the entire screen, including the gaps */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100dvh;
+  background: radial-gradient(circle at 50% -20%, #1c2321 0%, #0d0d0d 100%);
+  background-attachment: fixed;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 2. Center the app content only */
+#root {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  max-width: 480px; /* Limits width on desktop */
+  margin: 0 auto;   /* Centers the app */
+  background: transparent; 
+}
+
+/* Keep your existing animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fadeUp { animation: fadeUp 0.25s ease forwards; }
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.03) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.glass-nav {
+  background: rgba(13, 13, 13, 0.7) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
