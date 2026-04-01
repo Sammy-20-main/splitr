@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
 import { getCategoryById, CATEGORIES } from '../lib/categories'
-import { C } from '../theme'
+import { C, glass } from '../theme'
 
 export default function ExpenseDetail({ session }) {
   const { expenseId } = useParams()
@@ -139,7 +139,7 @@ export default function ExpenseDetail({ session }) {
       <div style={s.scroll}>
         {/* expense header */}
         {!editing ? (
-          <div style={s.headerCard} className="fadeUp">
+          <div style={{ ...s.headerCard, ...glass }} className="fadeUp">
             <div style={{ ...s.catIcon, background: cat.bg }}>
               <span style={{ fontSize:'28px' }}>{cat.icon}</span>
             </div>
@@ -153,7 +153,7 @@ export default function ExpenseDetail({ session }) {
           </div>
         ) : (
           /* edit form */
-          <div style={s.editCard} className="fadeUp">
+          <div style={{ ...s.editCard, ...glass }} className="fadeUp">
             <p style={s.sectionLabel}>editing expense</p>
 
             <label style={s.label}>description</label>
@@ -185,7 +185,7 @@ export default function ExpenseDetail({ session }) {
         {/* splits */}
         <div style={s.section}>
           <p style={s.sectionLabel}>split breakdown</p>
-          <div style={s.card}>
+          <div style={{ ...s.card, ...glass }}>
             {splits.map((split, i) => {
               const isMe = split.user_id === session.user.id
               const isPayer = split.user_id === expense.paid_by
@@ -294,6 +294,14 @@ const s = {
   commentMeta:{ fontSize:'10px', color:C.gray2, marginTop:'4px', display:'flex', alignItems:'center', gap:'6px' },
   deleteCommentBtn:{ fontSize:'10px', color:C.red, background:'none', border:'none', cursor:'pointer' },
   commentInput:{ display:'flex', gap:'8px', alignItems:'center' },
-  commentBox:{ flex:1, padding:'12px 16px', fontSize:'14px', background:C.surface, color:C.white, border:`1px solid ${C.border2}`, borderRadius:'50px', outline:'none' },
+  commentBox:{ 
+  ...glass,
+  flex:1,
+  padding:'12px 16px',
+  fontSize:'14px',
+  color:C.white,
+  borderRadius:'50px',
+  outline:'none'
+},
   sendBtn:{ width:'42px', height:'42px', borderRadius:'50%', background:C.teal, border:'none', cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 },
 }

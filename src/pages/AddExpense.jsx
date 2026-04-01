@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react'
 import { useParams, useNavigate, useLocation } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
 import { CATEGORIES, getCategoryById } from '../lib/categories'
-import { C } from '../theme'
+import { C, glass } from '../theme'
+
 
 export default function AddExpense({ session }) {
   const { groupId } = useParams()
@@ -124,7 +125,7 @@ export default function AddExpense({ session }) {
             style={s.descInput} />
 
           {/* category picker */}
-          <div style={s.fieldCard}>
+          <div style={{ ...s.fieldCard, ...glass }}>
             <p style={s.fieldLabel}>CATEGORY</p>
             <div style={s.catGrid}>
               {CATEGORIES.map(cat => (
@@ -140,7 +141,7 @@ export default function AddExpense({ session }) {
           </div>
 
           {/* paid by */}
-          <div style={s.fieldCard}>
+          <div style={{ ...s.fieldCard, ...glass }}>
             <div style={s.fieldHeader}>
               <span style={s.fieldLabel}>PAID BY</span>
               <button style={s.changeBtn} onClick={() => {
@@ -159,7 +160,7 @@ export default function AddExpense({ session }) {
           </div>
 
           {/* split method */}
-          <div style={s.fieldCard}>
+          <div style={{ ...s.fieldCard, ...glass }}>
             <p style={s.fieldLabel}>SPLIT METHOD</p>
             <div style={s.splitTabs}>
               {['equal','percent','exact'].map(type => (
@@ -173,7 +174,7 @@ export default function AddExpense({ session }) {
 
           {/* custom split inputs */}
           {splitType !== 'equal' && (
-            <div style={s.fieldCard}>
+            <div style={{ ...s.fieldCard, ...glass }}>
               <p style={s.fieldLabel}>
                 {splitType === 'percent' ? `PERCENTAGES (${totalCustom().toFixed(0)}% / 100%)` : `AMOUNTS (₹${totalCustom().toFixed(0)} / ₹${total.toFixed(0)})`}
               </p>

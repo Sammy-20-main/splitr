@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
-import { C } from '../theme'
+import { C, glass } from '../theme'
 
 export default function ScanReceipt({ session }) {
   const navigate = useNavigate()
@@ -254,7 +254,7 @@ const s = {
   pageTitle:{ fontSize:'28px', fontWeight:'800', color:C.white, letterSpacing:'-0.5px' },
   aiBadge:{ fontSize:'11px', fontWeight:'800', background:C.teal, color:'#000', padding:'3px 8px', borderRadius:'6px' },
   pageSub:{ fontSize:'14px', color:C.gray1 },
-  dropZone:{ background:C.surface, border:`1.5px dashed ${C.border2}`, borderRadius:'16px', padding:'40px 20px', textAlign:'center', cursor:'pointer', marginBottom:'14px' },
+  dropZone:{ ...glass, borderRadius:'16px', padding:'40px 20px', textAlign:'center', cursor:'pointer', marginBottom:'14px' },
   dropZoneSmall:{ padding:'8px', border:`1px solid ${C.border}` },
   previewImg:{ width:'100%', borderRadius:'10px', maxHeight:'260px', objectFit:'contain' },
   cameraIcon:{ width:'56px', height:'56px', borderRadius:'50%', background:C.surface2, display:'flex', alignItems:'center', justifyContent:'center', margin:'0 auto 14px' },
@@ -266,7 +266,7 @@ const s = {
   errorBox:{ background:'#FF4D4D15', border:'1px solid #FF4D4D33', borderRadius:'12px', padding:'14px', marginBottom:'14px' },
   errorText:{ fontSize:'13px', color:C.red, marginBottom:'8px' },
   retryBtn:{ fontSize:'12px', color:C.red, background:'none', border:`1px solid ${C.red}`, borderRadius:'8px', padding:'5px 12px', cursor:'pointer' },
-  resultCard:{ background:C.surface, borderRadius:'20px', border:`1px solid ${C.border}`, padding:'18px', marginBottom:'14px' },
+  resultCard:{ ...glass, borderRadius:'20px', padding:'18px', marginBottom:'14px' },
   resultHeader:{ display:'flex', justifyContent:'space-between', alignItems:'flex-start', marginBottom:'14px' },
   merchantName:{ fontSize:'22px', fontWeight:'800', color:C.white, letterSpacing:'-0.5px', marginBottom:'4px' },
   merchantDate:{ fontSize:'11px', fontWeight:'600', color:C.gray2, letterSpacing:'0.08em' },
@@ -280,7 +280,7 @@ const s = {
   totalAmt:{ fontSize:'24px', fontWeight:'800', color:C.teal, letterSpacing:'-0.5px' },
   groupLabel:{ fontSize:'11px', fontWeight:'600', color:C.gray2, letterSpacing:'0.08em', marginBottom:'8px' },
   select:{ width:'100%', padding:'14px 16px', fontSize:'15px', background:C.surface2, color:C.white, border:`1px solid ${C.border2}`, borderRadius:'12px', outline:'none' },
-  tipCard:{ background:C.surface, borderRadius:'16px', padding:'16px', border:`1px solid ${C.border}` },
+  tipCard:{ ...glass, borderRadius:'16px', padding:'16px' },
   tipTitle:{ fontSize:'13px', fontWeight:'600', color:C.white, marginBottom:'10px' },
   tipItem:{ fontSize:'13px', color:C.gray1, marginBottom:'6px', lineHeight:'1.5' },
   footer:{ position:'fixed', bottom:'70px', left:'50%', transform:'translateX(-50%)', width:'100%', maxWidth:'480px', background:C.bg, padding:'10px 20px', borderTop:`1px solid ${C.border}` },

@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
 import { calculateBalances } from '../lib/simplifyDebts'
 import { getCategoryById, CATEGORIES } from '../lib/categories'
-import { C } from '../theme'
+import { C, glass } from '../theme'
 
 export default function Group({ session }) {
   const { id } = useParams()
@@ -78,7 +78,7 @@ export default function Group({ session }) {
         {balances.length > 0 && (
           <div style={{ padding:'0 20px', marginBottom:'16px' }}>
             <div style={s.sectionLabel}>Balances</div>
-            <div style={s.balCard}>
+            <div style={{ ...s.balCard, ...glass }}>
               {balances.map((b, i) => (
                 <div key={i} style={{ ...s.balRow, borderBottom: i < balances.length-1 ? `1px solid ${C.border}` : 'none' }}>
                   <span style={s.balName}>{b.name}</span>
@@ -115,7 +115,7 @@ export default function Group({ session }) {
           </div>
 
           {filteredExpenses.length === 0 ? (
-            <div style={s.emptyCard}>
+            <div style={{ ...s.emptyCard, ...glass }}>
               <p style={{ fontSize:'14px', color:C.gray2, textAlign:'center' }}>
                 {filterCat === 'all' ? 'no expenses yet — add the first one!' : `no ${getCategoryById(filterCat).label} expenses`}
               </p>
@@ -126,7 +126,7 @@ export default function Group({ session }) {
               const iPaid = exp.paid_by === session.user.id
               const cat = getCategoryById(exp.category || 'other')
               return (
-                <div key={exp.id} style={s.expCard}
+                <div key={exp.id} style={{ ...s.expCard, ...glass }}
                   onClick={() => navigate(`/expense/${exp.id}`)}>
                   <div style={{ ...s.expIconWrap, background: cat.bg }}>
                     <span style={{ fontSize:'18px' }}>{cat.icon}</span>
@@ -187,3 +187,5 @@ const s = {
   emptyCard:{ background:C.surface, borderRadius:'14px', padding:'28px', border:`1.5px dashed ${C.border2}` },
   fab:{ position:'fixed', bottom:'30px', right:'20px', width:'54px', height:'54px', borderRadius:'50%', background:C.teal, border:'none', cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center', boxShadow:'0 0 20px #00D4AA55' },
 }
+
+

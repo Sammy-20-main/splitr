@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { QRCodeSVG } from 'qrcode.react'
 import { supabase } from '../lib/supabase'
 import { getGroupNetBalances, simplifyDebts } from '../lib/simplifyDebts'
-import { C } from '../theme'
+import { C, glass } from '../theme'
 
 // ── animated number counter ───────────────────────────────────────────────────
 function CountTo({ from, to, duration = 900, prefix = '₹' }) {
@@ -457,7 +457,13 @@ const s = {
   activeDot:{ width:'6px', height:'6px', borderRadius:'50%', background:C.teal },
   tabs:{ display:'flex', background:C.surface, margin:'0 20px', borderRadius:'12px', padding:'4px', gap:'4px' },
   tab:(active)=>({ flex:1, padding:'10px 0', fontSize:'14px', border:'none', borderRadius:'10px', background: active ? C.surface2 : 'transparent', color: active ? C.white : C.gray2, cursor:'pointer', fontWeight: active ? '600' : '400' }),
-  txnCard:{ background:C.surface, borderRadius:'20px', padding:'18px', marginBottom:'14px', border:`1px solid ${C.border}`, overflow:'hidden' },
+  txnCard:{ 
+  ...glass,
+  borderRadius:'20px',
+  padding:'18px',
+  marginBottom:'14px',
+  overflow:'hidden'
+},
   txnTop:{ display:'flex', alignItems:'center', marginBottom:'14px' },
   txnAvatarFrom:{ width:'42px', height:'42px', borderRadius:'50%', background:C.surface2, color:C.teal, fontSize:'16px', fontWeight:'700', display:'flex', alignItems:'center', justifyContent:'center', border:`2px solid ${C.border2}` },
   txnAvatarTo:{ width:'28px', height:'28px', borderRadius:'50%', background:'#00D4AA22', color:C.teal, fontSize:'12px', fontWeight:'700', display:'flex', alignItems:'center', justifyContent:'center', border:`2px solid ${C.bg}`, marginLeft:'-10px', marginTop:'14px' },
@@ -475,15 +481,29 @@ const s = {
   qrWrap:{ display:'inline-block', padding:'16px', background:C.surface2, borderRadius:'16px', marginBottom:'10px' },
   qrUpi:{ fontSize:'13px', color:C.teal, fontWeight:'600', marginBottom:'4px', fontFamily:'monospace' },
   qrHint:{ fontSize:'11px', color:C.gray2 },
-  recapCard:{ background:C.surface, borderRadius:'20px', padding:'20px', border:`1px solid ${C.border}`, marginTop:'4px' },
+  recapCard:{ 
+  ...glass,
+  borderRadius:'20px',
+  padding:'20px',
+  marginTop:'4px'
+},
   recapTitle:{ fontSize:'20px', fontWeight:'700', color:C.white, marginBottom:'8px' },
   recapSub:{ fontSize:'14px', color:C.gray1, lineHeight:'1.6', marginBottom:'14px' },
   recapLink:{ fontSize:'12px', fontWeight:'700', color:C.teal, background:'none', border:'none', cursor:'pointer', letterSpacing:'0.06em' },
-  allClearCard:{ background:C.surface, borderRadius:'20px', padding:'40px 24px', textAlign:'center', border:`1px solid ${C.border}` },
+  allClearCard:{ 
+  ...glass,
+  borderRadius:'20px',
+  padding:'40px 24px',
+  textAlign:'center'
+},
   allClearIconWrap:{ width:'64px', height:'64px', borderRadius:'50%', background:C.teal, display:'flex', alignItems:'center', justifyContent:'center', margin:'0 auto 18px', boxShadow:'0 0 28px #00D4AA66' },
   allClearTitle:{ fontSize:'22px', fontWeight:'800', color:C.white, marginBottom:'8px' },
   allClearSub:{ fontSize:'14px', color:C.gray2 },
-  emptyCard:{ background:C.surface, borderRadius:'16px', padding:'28px', border:`1.5px dashed ${C.border2}` },
+  emptyCard:{ 
+  ...glass,
+  borderRadius:'16px',
+  padding:'28px'
+},
   bottomNav:{ position:'fixed', bottom:0, left:'50%', transform:'translateX(-50%)', width:'100%', maxWidth:'480px', background:'#161616', borderTop:'1px solid #222', display:'flex', alignItems:'flex-end', padding:'8px 0 14px', zIndex:100 },
   navBtn:(active)=>({ flex:1, display:'flex', flexDirection:'column', alignItems:'center', gap:'3px', background:'none', border:'none', cursor:'pointer', color:active?C.teal:'#555', fontSize:'10px', fontWeight:active?'600':'400', padding:'4px 0' }),
   fab:{ width:'50px', height:'50px', borderRadius:'50%', background:C.teal, display:'flex', alignItems:'center', justifyContent:'center', marginBottom:'-4px', boxShadow:`0 0 18px ${C.teal}55` },

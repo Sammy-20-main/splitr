@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
-import { C } from '../theme'
+import { C, glass } from '../theme'
 
 export default function Friends({ session }) {
   const navigate = useNavigate()
@@ -267,14 +267,27 @@ const s = {
   tab:(active)=>({ flex:1, padding:'10px 0', fontSize:'13px', border:'none', borderRadius:'10px', background: active ? C.surface2 : 'transparent', color: active ? C.white : C.gray2, cursor:'pointer', fontWeight: active ? '600' : '400', display:'flex', alignItems:'center', justifyContent:'center', gap:'5px' }),
   tabBadge:(active)=>({ fontSize:'10px', fontWeight:'700', background: active ? C.teal : C.gray2, color: active ? '#000' : C.bg, padding:'1px 5px', borderRadius:'10px' }),
   listSection:{ padding:'0 20px' },
-  friendCard:{ display:'flex', alignItems:'center', gap:'12px', background:C.surface, borderRadius:'14px', padding:'14px 16px', marginBottom:'10px', border:`1px solid ${C.border}` },
+  friendCard:{ 
+  ...glass,
+  display:'flex',
+  alignItems:'center',
+  gap:'12px',
+  borderRadius:'14px',
+  padding:'14px 16px',
+  marginBottom:'10px'
+},
   friendAvatar:{ width:'42px', height:'42px', borderRadius:'50%', background:'#00D4AA22', color:C.teal, fontSize:'17px', fontWeight:'700', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 },
   friendName:{ fontSize:'15px', fontWeight:'600', color:C.white, marginBottom:'2px' },
   friendStatus:{ fontSize:'12px', color:C.gray2 },
   removeBtn:{ fontSize:'12px', color:C.red, background:'#FF4D4D15', border:'1px solid #FF4D4D33', borderRadius:'20px', padding:'5px 10px', cursor:'pointer' },
   acceptBtn:{ fontSize:'12px', color:'#000', background:C.teal, border:'none', borderRadius:'20px', padding:'6px 12px', cursor:'pointer', fontWeight:'700' },
   declineBtn:{ fontSize:'12px', color:C.red, background:'#FF4D4D15', border:'1px solid #FF4D4D33', borderRadius:'20px', padding:'5px 10px', cursor:'pointer' },
-  emptyCard:{ background:C.surface, borderRadius:'16px', padding:'32px 20px', textAlign:'center', border:`1.5px dashed ${C.border2}` },
+  emptyCard:{ 
+  ...glass,
+  borderRadius:'16px',
+  padding:'32px 20px',
+  textAlign:'center'
+},
   emptyIcon:{ fontSize:'36px', marginBottom:'12px' },
   emptyTitle:{ fontSize:'16px', fontWeight:'700', color:C.white, marginBottom:'6px' },
   emptyText:{ fontSize:'13px', color:C.gray2, lineHeight:'1.6' },

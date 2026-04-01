@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
-import { C } from '../theme'
+import { C, glass } from '../theme'
 
 export default function CreateGroup({ session }) {
   const [name, setName] = useState('')
@@ -30,15 +30,14 @@ export default function CreateGroup({ session }) {
         <span style={s.title}>new group</span>
         <div style={{ width:'32px' }} />
       </div>
-
       <div style={s.body}>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="fadeUp">
           <label style={s.label}>group name</label>
           <input type="text" placeholder="e.g. Goa Trip, Flat Expenses"
             value={name} onChange={e => setName(e.target.value)}
             autoFocus required style={s.input} />
-          <div style={s.infoBox}>
-            <p style={s.infoText}>invite friends after creating the group via a shareable link</p>
+          <div style={{ ...s.infoBox, ...glass }}>
+            <p style={s.infoText}>invite friends after creating via a shareable link</p>
           </div>
           <button type="submit" disabled={loading || !name.trim()}
             style={{ ...s.btn, opacity:(!name.trim()||loading)?0.5:1 }}>
@@ -51,14 +50,14 @@ export default function CreateGroup({ session }) {
 }
 
 const s = {
-  page: { minHeight:'100dvh', background:C.bg, maxWidth:'480px', margin:'0 auto', display:'flex', flexDirection:'column' },
-  topbar: { display:'flex', alignItems:'center', justifyContent:'space-between', padding:'16px 20px', borderBottom:`1px solid ${C.border}` },
-  back: { background:'none', border:'none', cursor:'pointer', color:C.white, display:'flex', alignItems:'center' },
-  title: { fontSize:'17px', fontWeight:'700', color:C.white },
-  body: { padding:'24px 20px' },
-  label: { fontSize:'11px', fontWeight:'600', color:C.gray2, letterSpacing:'0.08em', textTransform:'uppercase', display:'block', marginBottom:'8px' },
-  input: { width:'100%', padding:'14px 16px', fontSize:'16px', background:C.surface, color:C.white, border:`1px solid ${C.border2}`, borderRadius:'12px', outline:'none', marginBottom:'16px' },
-  infoBox: { background:'#00D4AA15', border:'1px solid #00D4AA33', borderRadius:'12px', padding:'12px 16px', marginBottom:'20px' },
-  infoText: { fontSize:'13px', color:C.teal },
-  btn: { width:'100%', padding:'15px', background:C.teal, color:'#000', border:'none', borderRadius:'50px', fontSize:'16px', fontWeight:'700', cursor:'pointer' },
+  page:{ minHeight:'100dvh', background:C.bg, maxWidth:'480px', margin:'0 auto', display:'flex', flexDirection:'column', position:'relative', zIndex:1 },
+  topbar:{ display:'flex', alignItems:'center', justifyContent:'space-between', padding:'16px 20px', borderBottom:'1px solid rgba(255,255,255,0.05)' },
+  back:{ background:'none', border:'none', cursor:'pointer', color:C.white, display:'flex' },
+  title:{ fontSize:'17px', fontWeight:'700', color:C.white },
+  body:{ padding:'24px 20px' },
+  label:{ fontSize:'11px', fontWeight:'600', color:C.gray2, letterSpacing:'0.08em', textTransform:'uppercase', display:'block', marginBottom:'8px' },
+  input:{ width:'100%', padding:'14px 16px', fontSize:'16px', background:'rgba(255,255,255,0.05)', backdropFilter:'blur(10px)', color:C.white, border:'1.5px solid rgba(255,255,255,0.1)', borderRadius:'12px', outline:'none', marginBottom:'16px' },
+  infoBox:{ padding:'12px 16px', marginBottom:'20px' },
+  infoText:{ fontSize:'13px', color:C.teal },
+  btn:{ width:'100%', padding:'15px', background:C.teal, color:'#000', border:'none', borderRadius:'50px', fontSize:'16px', fontWeight:'700', cursor:'pointer' },
 }
